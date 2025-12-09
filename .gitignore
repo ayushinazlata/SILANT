@@ -5,3 +5,4 @@ __pycache__/
 errors.log
 cache/db.sqlite3
 cookies.txt
+cache/

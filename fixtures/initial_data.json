@@ -349,6 +349,7 @@
         "recovery_method": 1,
         "spare_parts_used": "Шланг давления",
         "repair_date": "2024-11-15",
+        "downtime": 5,
         "service_company": 3
       }
     },
@@ -364,6 +365,7 @@
         "recovery_method": 2,
         "spare_parts_used": "Жгут проводов",
         "repair_date": "2024-12-22",
+        "downtime": 2,
         "service_company": 3
       }
     },
@@ -380,6 +382,7 @@
         "recovery_method": 1,
         "spare_parts_used": "Фильтр масла",
         "repair_date": "2024-10-09",
+        "downtime": 4,
         "service_company": 3
       }
     },
@@ -395,6 +398,7 @@
         "recovery_method": 2,
         "spare_parts_used": "Реле и проводка",
         "repair_date": "2024-11-30",
+        "downtime": 2,
         "service_company": 3
       }
     },
@@ -411,6 +415,7 @@
         "recovery_method": 1,
         "spare_parts_used": "Шланг высокого давления",
         "repair_date": "2024-08-19",
+        "downtime": 1,
         "service_company": 3
       }
     },
@@ -426,6 +431,7 @@
         "recovery_method": 2,
         "spare_parts_used": "Модуль управления",
         "repair_date": "2024-10-13",
+        "downtime": 2,
         "service_company": 3
       }
     },
@@ -442,6 +448,7 @@
         "recovery_method": 1,
         "spare_parts_used": "Уплотнитель",
         "repair_date": "2024-07-27",
+        "downtime": 2,
         "service_company": 3
       }
     },
@@ -457,6 +464,7 @@
         "recovery_method": 2,
         "spare_parts_used": "Датчик давления",
         "repair_date": "2024-09-11",
+        "downtime": 1,
         "service_company": 3
       }
     }
