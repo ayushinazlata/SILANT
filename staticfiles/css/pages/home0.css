@@ -1,0 +1,199 @@
+/* ================================
+ИСПРАВЛЕННЫЙ!!!
+================================ */
+
+.home {
+  padding: 20px;
+  text-align: center;
+}
+
+/* TITLE & SUBTITLE */
+.home__title {
+  font-size: 28px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: var(--color-primary);
+}
+
+.home__subtitle {
+  font-size: 22px;
+  margin-bottom: 24px;
+  font-weight: bold;
+  color: var(--color-primary);
+}
+
+/* USER ROLE BADGE */
+.home__role {
+  display: inline-block;
+  padding: 8px 16px;
+  font-weight: bold;
+  font-size: 16px;
+  border: 2px solid var(--color-accent);
+  border-radius: 6px;
+  background-color: var(--color-bg);
+  color: var(--color-primary);
+  margin-bottom: 20px;
+}
+
+/* SEARCH FORM (unauthorized user) */
+.home__form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.home__label {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.home__input {
+  padding: 10px 14px;
+  width: 280px;
+  max-width: 100%;
+  font-size: 16px;
+  border: 1px solid var(--color-primary);
+  border-radius: 4px;
+}
+
+.home__form-button {
+  min-width: 180px;
+}
+
+/* INFO MESSAGES */
+.home__message {
+  color: var(--color-accent);
+  font-weight: bold;
+  margin-top: 24px;
+  font-size: 16px;
+}
+
+/* TABLE WRAPPER (desktop version) */
+.home__table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* LINKS INSIDE TABLE */
+.home__link {
+  color: var(--color-primary);
+  font-weight: 700;
+  font-style: italic;
+  text-decoration: underline dotted;
+  transition: color 0.3s ease;
+}
+
+.home__link:hover {
+  color: var(--color-accent);
+}
+
+/* EMPTY STATE */
+.empty-data-message,
+.no-data-message {
+  text-align: center;
+  padding: 20px;
+  margin: 16px 0;
+  background-color: var(--color-bg);
+  border-radius: 8px;
+  font-size: 18px;
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+/* ================================
+   TABS
+================================ */
+
+.home__tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.home__tab {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+  padding: 8px 10px;
+  border-radius: 4px;
+  font-weight: bold;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.home__tab:hover,
+.home__tab.active {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+}
+
+/* ============================================================
+   ADAPTIVE
+============================================================ */
+
+@media (max-width: 1536px) {
+  .home__title { font-size: 26px; }
+  .home__subtitle { font-size: 20px; }
+}
+
+@media (max-width: 1440px) {
+  .home__title { font-size: 24px; }
+  .home__subtitle { font-size: 18px; }
+}
+
+@media (max-width: 1366px) {
+  .home { padding: 16px; }
+  .home__title { font-size: 22px; }
+
+  .home__input { width: 260px; font-size: 15px; }
+  .home__label { font-size: 15px; }
+
+  .home__tab { padding: 6px 8px; font-size: 14px; }
+}
+
+@media (max-width: 768px) {
+  .home { padding: 16px 12px; }
+  .home__role { font-size: 14px; }
+  .home__title { font-size: 20px; }
+  .home__subtitle { font-size: 16px; }
+
+  .home__form { display: grid; margin-bottom: 10px; }
+  .home__input { width: 100%; }
+
+  .home__tab { padding: 6px 8px; font-size: 13px; }
+}
+
+@media (max-width: 360px) {
+  .home__role { font-size: 11px; margin-bottom: 15px; }
+  .home__title { font-size: 14px; }
+  .home__subtitle { font-size: 13px; }
+
+  .home__tabs { gap: 10px; flex-wrap: wrap; }
+  .home__tab {
+    flex: 1 1 40%;
+    font-size: 11px;
+    padding: 8px;
+    align-items: center;
+  }
+
+  .home__input { font-size: 14px; margin-bottom: 10px; }
+  .home__label { font-size: 12px; }
+
+  .home__form { gap: 10px; display: block; }
+
+  .home__form-button {
+    font-size: 11px;
+    padding: 10px;
+    max-width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .home__message { font-size: 14px; }
+}

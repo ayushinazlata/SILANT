@@ -1,0 +1,5 @@
+<div class="home__tabs">
+    <a href="{% url 'home' %}?tab=machines" class="home__tab">Общая информация</a>
+    <a href="?tab=maintenance" class="home__tab {% if tab == 'maintenance' %}active{% endif %}">ТО</a>
+    <a href="?tab=claims" class="home__tab {% if tab == 'claims' %}active{% endif %}">Рекламации</a>
+</div>

@@ -1,0 +1,21 @@
+@import url('base/reset.css');
+@import url('base/variables.css');
+@import url('base/typography.css');
+@import url('base/layout.css');
+
+@import url('components/header.css');
+@import url('components/footer.css');
+
+@import url('components/select2.css');
+
+@import url('components/buttons.css');
+@import url('components/form.css');
+@import url('components/table.css');
+@import url('components/filters.css');
+@import url('components/modal.css');
+@import url('components/alerts.css');
+@import url('components/errors.css');
+
+@import url('pages/home.css');
+@import url('pages/reference.css');
+

@@ -1,0 +1,126 @@
+.form-page {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+    font-family: var(--font-main);
+    color: var(--color-primary);
+}
+
+.form-page__title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form__group {
+    margin-bottom: 16px;
+}
+
+.form__textarea {
+    width: 100%;
+}
+
+.form__label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 6px;
+    font-size: 16px;
+    color: var(--color-primary);
+}
+
+.form__input,
+.form select,
+textarea.form__input {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: var(--radius-lg);
+    line-height: 1.5;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+textarea.form__input {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form__input:focus {
+    border-color: var(--color-primary);
+    outline: none;
+}
+
+.form__input:invalid {
+    border-color: var(--color-accent);
+}
+
+.form__group--hidden {
+    display: none;
+}
+
+.form__error {
+    color: var(--color-accent);
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+.form__error--nonfield {
+    background: var(--color-bg);
+    padding: 12px;
+    border-radius: var(--radius-lg);
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.form-page__buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+@media (max-width: 768px) {
+    .form-page__title {
+        font-size: 22px;
+    }
+
+    .form__label {
+        font-size: 14px;
+    }
+
+    .form__input,
+    .form select {
+        font-size: 14px;
+    }
+
+    textarea.form__input {
+        min-height: 100px;
+    }
+
+    .form-page__buttons {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 360px) {
+    .form-page__title {
+        font-size: 20px;
+    }
+
+    .form__input,
+    .form select {
+        font-size: 13px; 
+        padding: 7px 10px;
+    }
+
+    .form__label {
+        font-size: 13px;
+    }
+}

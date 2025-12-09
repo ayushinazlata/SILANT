@@ -1,0 +1,29 @@
+.alerts {
+    width: 100%;
+    max-width: 900px;
+    margin: 20px auto;
+}
+
+.alert {
+    padding: 12px 16px;
+    border-radius: var(--radius-md);
+    margin: 10px auto;
+    max-width: 800px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.alert--success {
+    background: var(--color-bg);
+    color: var(--color-green);
+}
+
+.alert--error {
+    background: var(--color-bg);
+    color: var(--color-accent);
+}
+
+.alert--info {
+    background: var(--color-bg);
+    color: var(--color-primary);
+}

@@ -1,0 +1,18 @@
+<div class="modal" aria-hidden="true" data-modal-target="{{ item.pk }}">
+    <div class="modal__dialog">
+
+        <button class="modal__close" data-modal-close>&times;</button>
+
+        <h2 class="modal__title">Редактировать: {{ item.name }}</h2>
+
+        <form method="post" class="modal__form">
+            {% csrf_token %}
+            <input type="hidden" name="edit_id" value="{{ item.pk }}">
+
+            {% include "references/includes/reference_form_fields.html" with form=form %}
+            
+            <button type="submit" class="modal__submit">Сохранить</button>
+        </form>
+
+    </div>
+</div>

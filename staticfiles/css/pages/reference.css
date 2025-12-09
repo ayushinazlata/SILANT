@@ -1,0 +1,300 @@
+.reference {
+    padding: 30px 20px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: var(--font-main);
+    color: var(--color-primary);
+}
+
+.reference__title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Табы */
+.reference__tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 24px auto 32px;
+}
+
+.reference__tab {
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
+    padding: 10px 20px;
+    border-radius: var(--radius-md);
+    font-weight: bold;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: 0.3s ease;
+    display: inline-block;
+}
+
+.reference__tab:hover,
+.reference__tab.active {
+    background-color: var(--color-accent);
+    color: var(--color-white);
+}
+
+.reference__link {
+    color: var(--color-primary);
+    font-weight: 700;
+    text-decoration: underline dotted;
+    transition: color 0.3s ease;
+}
+
+.reference__link:hover {
+    color: var(--color-accent);
+}
+
+.reference__search-form {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.reference__search-input {
+    padding: 10px 12px;
+    border: 1px solid var(--color-primary);
+    border-radius: var(--radius-lg);
+    width: 260px;
+    font-size: 14px;
+}
+
+.reference__search-button {
+    padding: 10px 16px;
+    background: var(--color-accent);
+    color: var(--color-white);
+    border: none;
+    border-radius: var(--radius-lg);
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.reference__clean {
+    padding: 0;
+    background: transparent;
+    color: var(--color-accent);
+    text-decoration: underline;
+    font-weight: bold;
+    align-content: center;
+}
+
+.reference--detail {
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 60vh;
+}
+
+.reference__card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-bg);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    width: 100%;
+    max-width: 640px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.reference__card-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--color-accent);
+}
+
+.reference__card-body {
+    margin-bottom: 20px;
+}
+
+.reference__card-subtitle {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.reference__card-description {
+    font-size: 16px;
+    line-height: 1.6;
+    white-space: pre-line;
+    border-bottom: 1px solid var(--color-bg);
+    padding-bottom: 12px;
+}
+
+.reference__card-footer {
+    margin-top: 24px;
+    text-align: center;
+}
+
+.reference-form__group {
+    margin-bottom: 14px;
+}
+
+.reference-form__label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: var(--color-primary);
+}
+
+.reference-form__input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: var(--radius-lg);
+    font-size: 14px;
+    font-family: var(--font-main);
+    box-sizing: border-box;
+}
+
+.reference-form__error {
+    color: var(--color-accent);
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+.reference-form__error--nonfield {
+    background: var(--color-bg);
+    padding: 12px;
+    border-radius: var(--radius-lg);
+    margin-bottom: 16px;
+    text-align: center;
+    color: var(--color-accent);
+}
+
+
+@media (max-width: 1536px) {
+    .reference__title {
+        font-size: 26px;
+    }
+}
+
+@media (max-width: 1440px) {
+    .reference__title {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 1366px) {
+    .reference {
+        padding: 24px 16px 60px;
+    }
+
+    .reference__title {
+        font-size: 22px;
+        margin-bottom: 24px;
+    }
+
+    .reference__tab {
+        padding: 8px 14px;
+        font-size: 14px;
+    }
+
+    .reference__card {
+        padding: 30px;
+    }
+
+    .reference__card-title {
+        font-size: 24px;
+    }
+
+    .reference__card-description {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .reference {
+        padding: 20px 12px 20px;
+    }
+
+    .reference__title {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    .reference--detail {
+        padding: 40px 12px;
+    }
+
+    .reference__card {
+        padding: 24px;
+    }
+
+    .reference__card-title {
+        font-size: 22px;
+    }
+
+    .reference__card-description {
+        font-size: 14px;
+    }
+
+    .reference__tabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        gap: 10px;
+        padding-bottom: 8px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        scrollbar-color: var(--color-primary) transparent;
+    }
+
+    .reference__tab {
+        flex: 0 0 auto;
+        min-width: 180px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 360px) {
+    .reference__title {
+        font-size: 18px;
+    }
+
+    .reference__search-form {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .reference__search-input,
+    .reference__search-button {
+        width: 100%;
+    }
+
+    .reference__card {
+        padding: 18px;
+    }
+
+    .reference__card-title {
+        font-size: 16px;
+    }
+
+    .reference__card-subtitle {
+        font-size: 14px;
+    }
+
+    .reference__card-description {
+        font-size: 11px;
+    }
+
+    .reference__tabs {
+        gap: 8px;
+        padding-bottom: 6px;
+    }
+
+    .reference__tab {
+        min-width: 160px;
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+}

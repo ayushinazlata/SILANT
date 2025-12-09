@@ -1,0 +1,68 @@
+{% if claims %}
+    <div class="home__table-wrapper">
+        <table class="home__table">
+            <thead>
+                <tr>
+                    <th>Зав. № машины</th>
+                    <th>Дата отказа</th>
+                    <th>Наработка</th>
+                    <th>Узел отказа</th>
+                    <th>Описание отказа</th>
+                    <th>Способ восстановления</th>
+                    <th>Запасные части</th>
+                    <th>Дата восстановления</th>
+                    <th>Время простоя</th>
+                    <th>Сервисная организация</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            {% for c in claims %}
+                <tr>
+                    <td>
+                        {% if c.machine %}
+                            <a class="home__link"
+                               href="{% url 'machine-detail' c.machine.pk %}">
+                                {{ c.machine.factory_number }}
+                            </a>
+                        {% else %} — {% endif %}
+                    </td>
+
+                    <td>{{ c.failure_date }}</td>
+                    <td>{{ c.operating_time }}</td>
+
+                    <td>
+                        {% if c.failure_node %}
+                            <a href="{% url 'reference-detail' 'failure-node' c.failure_node.pk %}"
+                               class="home__link">
+                                {{ c.failure_node }}
+                            </a>
+                        {% else %} — {% endif %}
+                    </td>
+
+                    <td>{{ c.failure_description }}</td>
+
+                    <td>
+                        {% if c.recovery_method %}
+                            <a href="{% url 'reference-detail' 'recovery-method' c.recovery_method.pk %}"
+                               class="home__link">
+                                {{ c.recovery_method }}
+                            </a>
+                        {% else %} — {% endif %}
+                    </td>
+
+                    <td>{{ c.spare_parts_used }}</td>
+                    <td>{{ c.repair_date }}</td>
+                    <td>{{ c.downtime }}</td>
+                    <td>{{ c.service_company }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% else %}
+    <div class="empty-data-message">Рекламаций не найдено</div>
+{% endif %}
+
+{% include "home/includes/pagination.html" with page_obj=claims tab_name="claims" %}

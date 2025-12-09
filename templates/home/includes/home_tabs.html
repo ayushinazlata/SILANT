@@ -1,0 +1,17 @@
+<div class="home__tabs">
+    <a href="?tab=machines" class="home__tab {% if tab == 'machines' %}active{% endif %}">
+        Общая информация
+    </a>
+    <a href="?tab=maintenance" class="home__tab {% if tab == 'maintenance' %}active{% endif %}">
+        ТО
+    </a>
+    <a href="?tab=claims" class="home__tab {% if tab == 'claims' %}active{% endif %}">
+        Рекламации
+    </a>
+
+    {% if is_manager %}
+        <a href="{% url 'reference-all' %}" class="home__tab">
+            Справочники
+        </a>
+    {% endif %}
+</div>

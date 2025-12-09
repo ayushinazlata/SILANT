@@ -1,0 +1,63 @@
+{% if is_manager or is_service %}
+    <div class="home__add-button-wrapper">
+        <a href="{% url 'create-claim-for-machine' machine.pk %}" class="home__add-button">
+            Добавить рекламацию
+        </a>
+    </div>
+{% endif %}
+
+{% if claims %}
+    <div class="home__table-wrapper">
+        <table class="home__table">
+            <thead>
+            <tr>
+                <th>Дата отказа</th>
+                <th>Наработка</th>
+                <th>Узел отказа</th>
+                <th>Описание</th>
+                <th>Способ восстановления</th>
+                <th>Запчасти</th>
+                <th>Дата восстановления</th>
+                <th>Простой</th>
+                <th>Сервисная орг.</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            {% for c in claims %}
+                <tr>
+                    <td>{{ c.failure_date }}</td>
+                    <td>{{ c.operating_time }}</td>
+
+                    <td>
+                        {% if c.failure_node %}
+                            <a class="home__link"
+                            href="{% url 'reference-detail' 'failure-node' c.failure_node.pk %}">
+                                {{ c.failure_node }}
+                            </a>
+                        {% else %}—{% endif %}
+                    </td>
+
+                    <td>{{ c.failure_description }}</td>
+
+                    <td>
+                        {% if c.recovery_method %}
+                            <a class="home__link" href="{% url 'reference-detail' 'recovery-method' c.recovery_method.pk %}">
+                                {{ c.recovery_method }}
+                            </a>
+                        {% else %}—{% endif %}
+                    </td>
+
+                    <td>{{ c.spare_parts_used }}</td>
+                    <td>{{ c.repair_date }}</td>
+                    <td>{{ c.downtime }}</td>
+                    <td>{{ c.service_company }}</td>
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% else %}
+    <div class="empty-data-message">Рекламаций не найдено</div>
+{% endif %}

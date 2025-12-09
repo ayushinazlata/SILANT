@@ -1,0 +1,15 @@
+<form method="get" class="reference__search-form">
+    <input type="hidden" name="tab" value="{{ tab }}">
+
+    <input 
+        type="text"
+        name="search"
+        value="{{ request.GET.search }}"
+        placeholder="Поиск по названию..."
+        class="reference__search-input"
+    >
+
+    <button type="submit" class="reference__search-button">Найти</button>
+
+    <a href="?tab={{ tab }}" class="reference__clean">Сбросить</a>
+</form>

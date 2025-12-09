@@ -1,0 +1,11 @@
+main {
+    flex: 1;
+    width: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+    line-height: 1.4;
+}

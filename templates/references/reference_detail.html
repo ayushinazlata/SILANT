@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Просмотр элемента{% endblock %}
+
+{% block content %}
+<section class="reference reference--detail">
+
+    <div id="reference-open-modal" data-open-id="{{ open_modal_id|default:'' }}"></div>
+
+    <div class="reference__card">
+
+        <h1 class="reference__card-title">{{ reference.name }}</h1>
+
+        <div class="reference__card-body">
+            <h3 class="reference__card-subtitle">Описание</h3>
+            <p class="reference__card-description">
+                {{ reference.description|default:"—" }}
+            </p>            
+        </div>
+
+        <div class="reference__card-footer">
+            {% if is_manager %}
+                <a href="{% url 'reference-all' %}?tab={{ model_name }}&page={{ request.GET.page }}" class="back__button">Назад</a>
+            {% else %}
+                <a href="{% url 'home' %}" class="back__button">На главную</a>
+            {% endif %}
+        </div>
+
+    </div>
+
+    {% if is_manager %}
+        {% include "references/includes/reference_modal.html" with item=reference form=form %}
+    {% endif %}
+
+</section>
+{% endblock %}

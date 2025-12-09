@@ -1,0 +1,13 @@
+{% for field in form %}
+    <div class="reference-form__group">
+        <label class="reference-form__label" for="{{ field.id_for_label }}">
+            {{ field.label }}
+        </label>
+
+        {{ field }}
+
+        {% if field.errors %}
+            <div class="reference-form__error">{{ field.errors }}</div>
+        {% endif %}
+    </div>
+{% endfor %}

@@ -1,0 +1,61 @@
+{% if maintenances %}
+    <div class="home__table-wrapper">
+        <table class="home__table">
+            <thead>
+                <tr>
+                    <th>Зав. № машины</th>
+                    <th>Вид ТО</th>
+                    <th>Дата проведения</th>
+                    <th>Наработка, м/ч</th>
+                    <th>№ заказ-наряда</th>
+                    <th>Дата заказ-наряда</th>
+                    <th>Организация</th>
+                    <th>Сервисная организация</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            {% for m in maintenances %}
+                <tr>
+                    <td>
+                        <a class="home__link" href="{% url 'machine-detail' m.machine.pk %}">
+                            {{ m.machine.factory_number }}
+                        </a>
+                    </td>
+
+                    <td>
+                        {% if m.maintenance_type %}
+                            <a href="{% url 'reference-detail' 'maintenance-type' m.maintenance_type.pk %}"
+                               class="home__link">
+                                {{ m.maintenance_type }}
+                            </a>
+                        {% else %} — {% endif %}
+                    </td>
+
+                    <td>{{ m.maintenance_date }}</td>
+                    <td>{{ m.operating_time }}</td>
+                    <td>{{ m.order_number }}</td>
+                    <td>{{ m.order_date }}</td>
+
+                    <td>
+                        {% if m.organization %}
+                            <a href="{% url 'reference-detail' 'maintenance-org' m.organization.pk %}"
+                               class="home__link">
+                                {{ m.organization }}
+                            </a>
+                        {% else %} — {% endif %}
+                    </td>
+
+                    <td>{{ m.service_company }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% else %}
+    <div class="empty-data-message">Данных о ТО нет</div>
+{% endif %}
+
+
+{% include "home/includes/pagination.html" with page_obj=maintenances tab_name="maintenance" %}

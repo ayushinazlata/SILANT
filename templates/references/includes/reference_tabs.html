@@ -1,0 +1,7 @@
+<div class="reference__tabs">
+    {% for key, label in verbose_names.items %}
+        <a href="?tab={{ key }}" class="reference__tab {% if tab == key %}active{% endif %}">
+            {{ label }}
+        </a>
+    {% endfor %}
+</div>

@@ -1,0 +1,50 @@
+<h1 class="home__title">
+    Проверьте комплектацию и технические характеристики техники Силант
+</h1>
+
+<form method="get" action="{% url 'home' %}" class="home__form">
+    <label class="home__label" for="factory_number">Заводской номер:</label>
+    <input class="home__input" id="factory_number" name="factory_number" type="text" required>
+    <button class="home__button" type="submit">Поиск</button>
+</form>
+
+{% if machine %}
+    <div class="home__table-wrapper">
+        <table class="home__table">
+            <thead>
+                <tr>
+                    <th>Зав. № машины</th>
+                    <th>Модель техники</th>
+                    <th>Модель двигателя</th>
+                    <th>Модель трансмиссии</th>
+                    <th>Модель ведущего моста</th>
+                    <th>Модель управляемого моста</th>
+                    <th>Зав. № двигателя</th>
+                    <th>Зав. № трансмиссии</th>
+                    <th>Зав. № ведущего моста</th>
+                    <th>Зав. № управляемого моста</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>{{ machine.factory_number }}</td>
+                    <td>{{ machine.machine_model }}</td>
+                    <td>{{ machine.engine_model }}</td>
+                    <td>{{ machine.transmission_model }}</td>
+                    <td>{{ machine.driving_axle_model }}</td>
+                    <td>{{ machine.steering_axle_model }}</td>
+                    <td>{{ machine.engine_number }}</td>
+                    <td>{{ machine.transmission_number }}</td>
+                    <td>{{ machine.driving_axle_number }}</td>
+                    <td>{{ machine.steering_axle_number }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+{% elif factory_number %}
+    <div class="empty-data-message">
+        Машина с таким заводским номером не найдена.
+    </div>
+{% endif %}

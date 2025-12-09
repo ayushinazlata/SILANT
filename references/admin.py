@@ -9,7 +9,8 @@ from .models import (
 
 class ReferenceAdmin(admin.ModelAdmin):
     list_display = ('name', 'description')
-    search_fields = ('name',)
+    search_fields = ('name', 'description')
+    ordering = ['name']
 
 admin.site.register(MachineModel, ReferenceAdmin)
 admin.site.register(EngineModel, ReferenceAdmin)

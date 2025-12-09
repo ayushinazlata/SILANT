@@ -1,0 +1,540 @@
+/* .reference {
+    padding: 30px 20px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: var(--font-main);
+    color: var(--color-primary);
+}
+
+.reference__title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.reference__list {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+.reference__item {
+    border-bottom: 1px solid var(--color-bg);
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+}
+
+.reference__tabs {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+}
+
+.reference__tab {
+    padding: 10px 20px;
+    border: 1px solid var(--color-primary);
+    border-radius: 4px;
+    font-weight: bold;
+    color: var(--color-primary);
+    text-decoration: none;
+    background-color: var(--color-bg);
+    transition: background-color 0.3s ease;
+}
+
+.reference__tab:hover,
+.reference__tab.active {
+    background-color: var(--color-accent);
+    color: var(--color-white);
+}
+
+.reference__search-form {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.reference__search-input {
+    padding: 10px 12px;
+    border: 1px solid var(--color-primary);
+    border-radius: 6px;
+    width: 260px;
+    font-size: 14px;
+}
+
+.reference__search-button {
+    padding: 10px 16px;
+    background: var(--color-accent);
+    color: var(--color-white);
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.reference--detail {
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 60vh;
+}
+
+.reference__card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-bg);
+    border-radius: 8px;
+    padding: 40px;
+    width: 100%;
+    max-width: 640px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.reference__card-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--color-accent);
+}
+
+.reference__card-subtitle {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.reference__card-description {
+    font-size: 16px;
+    line-height: 1.6;
+    white-space: pre-line;
+    border-bottom: 1px solid var(--color-bg);
+}
+
+.reference__card-footer {
+    margin-top: 24px;
+    text-align: center;
+}
+
+
+@media (max-width: 1536px) {
+    .reference__title { font-size: 26px; }
+}
+
+@media (max-width: 1440px) {
+    .reference__title { font-size: 24px; }
+}
+
+@media (max-width: 1366px) {
+    .reference {
+        padding: 24px 16px 60px;
+    }
+
+    .reference__title {
+        font-size: 22px;
+        margin-bottom: 24px;
+    }
+
+    .reference__tab {
+        padding: 8px 14px;
+        font-size: 14px;
+    }
+
+    .reference__card {
+        padding: 30px;
+    }
+
+    .reference__card-title {
+        font-size: 24px;
+    }
+
+    .reference__card-description {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .reference {
+        padding: 20px 12px 20px;
+    }
+
+    .reference__title {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    .reference--detail {
+        padding: 40px 12px;
+    }
+
+    .reference__card {
+        padding: 24px;
+    }
+
+    .reference__card-title {
+        font-size: 22px;
+    }
+
+    .reference__card-description {
+        font-size: 14px;
+    }
+
+    .reference .home__tabs {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        gap: 10px;
+        padding-bottom: 8px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        scrollbar-color: var(--color-primary) transparent;
+    }
+
+    .reference .home__tabs a {
+        flex: 0 0 auto;
+        white-space: nowrap;
+        min-width: 180px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 360px) {
+    .reference__title {
+        font-size: 18px;
+    }
+
+    .reference__search-form {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+    }
+
+    .reference__search-input {
+        width: 100%;
+    }
+
+    .reference__search-button {
+        width: 100%;
+    }
+
+    .reference__card {
+        padding: 18px;
+    }
+
+    .reference__card-title {
+        font-size: 16px;
+    }
+
+    .reference__card-subtitle {
+        font-size: 14px;
+    }
+
+    .reference__card-description {
+        font-size: 11px;
+    }
+
+    .reference .home__tabs {
+        gap: 8px;
+        padding-bottom: 6px;
+    }
+
+    .reference .home__tabs a {
+        min-width: 160px;
+    }
+
+    .reference__tab {
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+}
+ */
+
+
+/* ============================================================
+   REFERENCE MAIN WRAPPER
+============================================================ */
+.reference {
+    padding: 30px 20px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: var(--font-main);
+    color: var(--color-primary);
+}
+
+.reference__title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+
+/* ============================================================
+   TABS (НОВЫЙ БЛОК БЭМ)
+============================================================ */
+
+.reference__tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 24px auto 32px;
+    max-width: 100%;
+}
+
+.reference__tab {
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: 0.3s ease;
+    display: inline-block;
+}
+
+.reference__tab:hover,
+.reference__tab.active {
+    background-color: var(--color-accent);
+    color: var(--color-white);
+}
+
+
+/* ============================================================
+   SEARCH FORM
+============================================================ */
+.reference__search-form {
+    display: grid;
+    gap: 12px;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.reference__search-input {
+    padding: 10px 12px;
+    border: 1px solid var(--color-primary);
+    border-radius: 6px;
+    width: 260px;
+    font-size: 14px;
+}
+
+.reference__search-button {
+    padding: 10px 16px;
+    background: var(--color-accent);
+    color: var(--color-white);
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+/* ============================================================
+   DETAIL PAGE
+============================================================ */
+.reference--detail {
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 60vh;
+}
+
+.reference__card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-bg);
+    border-radius: 8px;
+    padding: 40px;
+    width: 100%;
+    max-width: 640px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.reference__card-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--color-accent);
+}
+
+.reference__card-subtitle {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.reference__card-description {
+    font-size: 16px;
+    line-height: 1.6;
+    white-space: pre-line;
+    border-bottom: 1px solid var(--color-bg);
+    padding-bottom: 12px;
+}
+
+.reference__card-footer {
+    margin-top: 24px;
+    text-align: center;
+}
+
+
+/* ============================================================
+   EDIT BUTTON
+============================================================ */
+.reference__edit-btn {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    background-color: var(--color-accent);
+    border-radius: 4px;
+}
+
+/* Иконка внутри красного квадрата */
+.edit-icon {
+    width: 18px;
+    height: 18px;
+    display: block;
+}
+
+.reference__edit-btn img {
+    width: 16px;
+    height: 16px;
+}
+
+.reference__edit-btn:hover {
+    background: var(--color-primary);
+}
+
+
+/* ============================================================
+   ADAPTIVE
+============================================================ */
+
+@media (max-width: 1536px) {
+    .reference__title { font-size: 26px; }
+}
+
+@media (max-width: 1440px) {
+    .reference__title { font-size: 24px; }
+}
+
+@media (max-width: 1366px) {
+
+    .reference {
+        padding: 24px 16px 60px;
+    }
+
+    .reference__title {
+        font-size: 22px;
+        margin-bottom: 24px;
+    }
+
+    .reference__tab {
+        padding: 8px 14px;
+        font-size: 14px;
+    }
+
+    .reference__card {
+        padding: 30px;
+    }
+
+    .reference__card-title {
+        font-size: 24px;
+    }
+
+    .reference__card-description {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .reference {
+        padding: 20px 12px 20px;
+    }
+
+    .reference__title {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    .reference--detail {
+        padding: 40px 12px;
+    }
+
+    .reference__card {
+        padding: 24px;
+    }
+
+    .reference__card-title {
+        font-size: 22px;
+    }
+
+    .reference__card-description {
+        font-size: 14px;
+    }
+
+    /* Горизонтальный скролл табов */
+    .reference__tabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        gap: 10px;
+        padding-bottom: 8px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        scrollbar-color: var(--color-primary) transparent;
+    }
+
+    .reference__tab {
+        flex: 0 0 auto;
+        min-width: 180px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 360px) {
+
+    .reference__title { font-size: 18px; }
+
+    .reference__search-form {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+    }
+
+    .reference__search-input { width: 100%; }
+    .reference__search-button { width: 100%; }
+
+    .reference__card {
+        padding: 18px;
+    }
+
+    .reference__card-title {
+        font-size: 16px;
+    }
+
+    .reference__card-subtitle {
+        font-size: 14px;
+    }
+
+    .reference__card-description {
+        font-size: 11px;
+    }
+
+    .reference__tabs {
+        gap: 8px;
+        padding-bottom: 6px;
+    }
+
+    .reference__tab {
+        min-width: 160px;
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+}

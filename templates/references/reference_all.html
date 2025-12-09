@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Справочники{% endblock %}
+
+{% block content %}
+<section class="reference">
+
+    <h1 class="reference__title">Справочники</h1>
+
+    <div id="reference-open-modal" data-open-id="{{ open_modal_id|default:'' }}"></div>
+
+    {% include "references/includes/reference_tabs.html" %}
+
+    {% if is_manager %}
+        <div class="home__add-button-wrapper">
+            <a href="{% url 'reference-create' tab %}" class="home__add-button">Добавить элемент</a>
+        </div>
+    {% endif %}
+
+    {% include "references/includes/reference_search_form.html" %}
+
+    {% if page_obj.object_list %}
+        {% include "references/includes/reference_table.html" %}
+    {% else %}
+        <div class="empty-data-message">
+            {% if search_query %}
+                Ничего не найдено по запросу: <strong>{{ search_query }}</strong>
+            {% else %}
+                <div class="empty-data-message">Данных не найдено</div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% if page_obj.has_other_pages %}
+        <div class="pagination">
+            {% if page_obj.has_previous %}
+                <a href="?tab={{ tab }}&search={{ search_query }}&page={{ page_obj.previous_page_number }}">← Назад</a>
+            {% endif %}
+
+            <span>Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}</span>
+
+            {% if page_obj.has_next %}
+                <a href="?tab={{ tab }}&search={{ search_query }}&page={{ page_obj.next_page_number }}">Вперёд →</a>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% if is_manager %}
+        {% for row in page_items %}
+            {% with item=row.item form=row.form %}
+                {% include "references/includes/reference_modal.html" %}
+            {% endwith %}
+        {% endfor %}
+    {% endif %}
+
+    <div class="back__button-wrapper">
+        <a href="{% url 'home' %}" class="back__button">На главную</a>
+    </div>
+
+</section>
+{% endblock %}

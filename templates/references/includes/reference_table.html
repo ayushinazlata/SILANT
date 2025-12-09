@@ -1,0 +1,38 @@
+{% load static %}
+
+<div class="reference__table-wrapper">
+    <table class="reference__table">
+        <thead>
+            <tr>
+                <th>Название</th>
+                <th>Описание</th>
+                {% if is_manager %}
+                    <th>Действия</th>
+                {% endif %}
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for item in page_obj %}
+                <tr>
+                    <td>
+                        <a class="reference__link" 
+                           href="{% url 'reference-detail' tab item.pk %}">
+                            {{ item.name }}
+                        </a>
+                    </td>
+
+                    <td>{{ item.description|truncatechars:300 }}</td>
+
+                    {% if is_manager %}
+                        <td>
+                            <button class="reference__edit-btn" data-modal-button data-id="{{ item.pk }}">
+                                <img src="{% static 'icons/edit.svg' %}" class="reference__edit-icon" alt="Редактировать">
+                            </button>
+                        </td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

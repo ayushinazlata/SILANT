@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Машина {{ machine.factory_number }}{% endblock %}
+
+{% block content %}
+<section class="home">
+
+    <h1 class="home__title">Машина {{ machine.factory_number }}</h1>
+
+    {% include "machines/includes/machine_tabs.html" %}
+
+    {% if tab == "maintenance" %}
+        <h2 class="home__subtitle">Информация о проведённых ТО Вашей техники</h2>
+
+        {% include "machines/includes/machine_filters.html" with filter=maintenance_filter tab_name="maintenance" %}
+        {% include "machines/includes/machine_maintenance_block.html" %}
+    {% endif %}
+
+    {% if tab == "claims" %}
+        <h2 class="home__subtitle">Информация о рекламациях Вашей техники</h2>
+        
+        {% include "machines/includes/machine_filters.html" with filter=claim_filter tab_name="claims" %}
+        {% include "machines/includes/machine_claims_block.html" %}
+    {% endif %}
+
+    <div class="back__button-wrapper">
+        <a href="{% url 'home' %}" class="back__button">На главную</a>
+    </div>
+
+</section>
+{% endblock %}

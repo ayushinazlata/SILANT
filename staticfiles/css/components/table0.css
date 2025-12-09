@@ -1,0 +1,244 @@
+/* ================================
+ИСПРАВЛЕННЫЙ!!!
+================================ */
+
+.home__table,
+.reference__table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--color-white);
+  font-family: var(--font-main);
+  font-size: 11px;
+}
+
+/* Desktop row height */
+.home__table th, .home__table td,
+.reference__table th, .reference__table td {
+  border: 1px solid var(--color-primary);
+  padding: 8px;
+  text-align: center;
+  vertical-align: middle;
+  white-space: normal;
+}
+
+/* Italic for actual machine data */
+.home__table td {
+  font-style: italic;
+}
+
+/* Header row */
+.home__table th,
+.reference__table th {
+  background-color: var(--color-bg);
+  color: var(--color-primary);
+  font-weight: bold;
+}
+
+/* Zebra rows */
+.home__table tbody tr:nth-child(even),
+.reference__table tbody tr:nth-child(even) {
+  background-color: #eef0f4;
+}
+
+
+/* Hover */
+.home__table tbody tr:hover,
+.reference__table tbody tr:hover {
+  background-color: #e8f1ff;
+  cursor: pointer;
+}
+
+/* No data row */
+.home__table td[colspan]:only-child {
+  background-color: var(--color-white);
+  color: var(--color-accent);
+  text-align: center;
+  font-weight: bold;
+}
+
+/* ================================
+   TABLE WRAPPER
+================================ */
+
+.home__table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  position: relative;
+}
+
+/* ================================
+   REFERENCE TABLE ALWAYS VISIBLE
+================================ */
+
+.reference__table-wrapper {
+  display: block !important;
+}
+
+/* ================================
+   FIX COLUMN WIDTHS FOR REFERENCE TABLE
+================================ */
+
+/* Первая колонка ("Название") — фиксированная */
+.reference__table th:first-child,
+.reference__table td:first-child {
+    width: 180px;      
+    white-space: nowrap;
+}
+
+/* Средняя колонка ("Описание") — занимает всё оставшееся */
+.reference__table th:nth-child(2),
+.reference__table td:nth-child(2) {
+    width: auto;
+    max-width: 100%;
+    word-break: break-word;
+}
+
+/* Последняя колонка ("Действия") — фиксированная узкая */
+.reference__table th:last-child,
+.reference__table td:last-child {
+    width: 100px;
+    text-align: center;
+}
+
+/* .reference__table td:last-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+} */
+
+
+/* ================================
+   MOBILE TABLE SYSTEM
+================================ */
+
+.mobile-table-wrapper {
+  display: none;
+}
+
+/* MOBILE TABLE STYLES */
+.mobile-table {
+  border-collapse: collapse;
+  width: max-content;
+  min-width: 100%;
+  table-layout: fixed;
+  font-style: italic;
+}
+
+.mobile-table .mobile-label {
+  position: sticky;
+  left: 0;
+  z-index: 5;
+  background: var(--color-bg);
+  color: var(--color-primary);
+  font-weight: bold;
+  padding: 8px;
+  border-right: 1px solid var(--color-primary);
+  width: 120px;
+  text-align: left;
+  white-space: normal;
+  word-break: break-word;
+}
+
+.mobile-table td,
+.mobile-table th {
+  border: 1px solid var(--color-primary);
+  padding: 8px 6px;
+  font-size: 12px;
+  vertical-align: middle;
+  background: var(--color-white);
+  color: var(--color-primary);
+  white-space: normal;
+  word-break: break-word;
+  max-width: 120px;
+}
+
+/* First data row highlight */
+.mobile-table tbody tr:nth-child(1) td {
+  font-weight: bold;
+}
+
+/* Zebra mobile */
+.mobile-table tr:nth-child(even) td {
+  background: var(--color-table);
+}
+
+/* Hide elements on mobile if needed */
+.mobile-hidden {
+  display: none !important;
+}
+
+/* ================================
+   ADAPTIVE BREAKPOINTS
+================================ */
+
+@media (max-width: 1366px) {
+  /* Sticky first column on desktop only */
+  .home__table th:first-child,
+  .home__table td:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 9;
+    background-color: var(--color-bg);
+  }
+}
+
+@media (max-width: 768px) {
+
+  /* HIDE DESKTOP TABLE */
+  .home__table-wrapper {
+    display: none !important;
+  }
+
+  /* SHOW MOBILE TABLE if exists */
+  .mobile-table-wrapper {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 12px;
+  }
+
+  /* DO NOT HIDE reference tables */
+  .reference__table-wrapper {
+    display: block !important;
+  }
+}
+
+@media (max-width: 360px) {
+
+  .mobile-table .mobile-label {
+    width: 100px;
+    padding: 6px;
+  }
+
+  .mobile-table td,
+  .mobile-table th {
+    padding: 6px 4px;
+    font-size: 11px;
+    max-width: 100px;
+  }
+}
+
+/* ================================
+   PAGINATION
+================================ */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px 0;
+  font-size: 14px;
+}
+
+.pagination a {
+  padding: 6px 12px;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.pagination span {
+  padding: 6px 12px;
+}

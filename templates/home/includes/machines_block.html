@@ -1,0 +1,101 @@
+{% if machines %}
+    <div class="home__table-wrapper">
+        <table class="home__table">
+            <thead>
+            <tr>
+                <th>Зав. № машины</th>
+                <th>Модель техники</th>
+                <th>Модель двигателя</th>
+                <th>Модель трансмиссии</th>
+                <th>Модель ведущего моста</th>
+                <th>Модель управляемого моста</th>
+                <th>Зав. № двигателя</th>
+                <th>Зав. № трансмиссии</th>
+                <th>Зав. № ведущего моста</th>
+                <th>Зав. № управляемого моста</th>
+                <th>Получатель</th>
+                <th>Адрес поставки</th>
+                <th>Комплектация</th>
+                <th>Договор</th>
+                <th>Дата отгрузки</th>
+                <th>Клиент</th>
+                <th>Сервисная организация</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            {% for machine in machines %}
+                <tr>
+                    <td>
+                        <a class="home__link" href="{% url 'machine-detail' machine.pk %}">
+                            {{ machine.factory_number }}
+                        </a>
+                    </td>
+
+                    <td>
+                        {% if machine.machine_model %}
+                            <a href="{% url 'reference-detail' 'machine-model' machine.machine_model.pk %}"
+                                class="home__link">
+                                {{ machine.machine_model }}
+                            </a>
+                        {% else %} — {% endif %}
+                    </td>
+
+                    <td>
+                        {% if machine.engine_model %}
+                            <a href="{% url 'reference-detail' 'engine-model' machine.engine_model.pk %}"
+                                class="home__link">
+                                {{ machine.engine_model }}
+                            </a>
+                        {% else %} — {% endif %}
+                    </td>
+
+                    <td>
+                        {% if machine.transmission_model %}
+                            <a href="{% url 'reference-detail' 'transmission-model' machine.transmission_model.pk %}"
+                                class="home__link">
+                                {{ machine.transmission_model }}
+                            </a>
+                        {% else %} — {% endif %}
+                    </td>
+
+                    <td>
+                        {% if machine.driving_axle_model %}
+                            <a href="{% url 'reference-detail' 'driving-axle' machine.driving_axle_model.pk %}"
+                                class="home__link">
+                                {{ machine.driving_axle_model }}
+                            </a>
+                        {% else %} — {% endif %}
+                    </td>
+
+                    <td>
+                        {% if machine.steering_axle_model %}
+                            <a href="{% url 'reference-detail' 'steering-axle' machine.steering_axle_model.pk %}"
+                                class="home__link">
+                                {{ machine.steering_axle_model }}
+                            </a>
+                        {% else %} — {% endif %}
+                    </td>
+
+                    <td>{{ machine.engine_number }}</td>
+                    <td>{{ machine.transmission_number }}</td>
+                    <td>{{ machine.driving_axle_number }}</td>
+                    <td>{{ machine.steering_axle_number }}</td>
+                    <td>{{ machine.consignee }}</td>
+                    <td>{{ machine.delivery_address }}</td>
+                    <td><em>{{ machine.equipment }}</em></td>
+                    <td>{{ machine.supply_contract }}</td>
+                    <td>{{ machine.shipment_date }}</td>
+                    <td>{{ machine.client }}</td>
+                    <td>{{ machine.service_company }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% else %}
+    <div class="empty-data-message">Данных не найдено</div>
+{% endif %}
+
+{% include "home/includes/pagination.html" with page_obj=machines tab_name="machines" %}

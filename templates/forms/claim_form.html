@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block title %}Создание рекламации{% endblock %}
+
+{% block content %}
+<section class="form-page">
+
+    <h1 class="form-page__title">
+        {% if machine %}
+            Добавление рекламации для машины № {{ machine.factory_number }}
+        {% else %}
+            Добавление рекламации
+        {% endif %}
+    </h1>
+
+    <form method="post" class="form">
+        {% csrf_token %}
+
+        {% if form.non_field_errors %}
+            <div class="form__error form__error--nonfield">
+                {{ form.non_field_errors }}
+            </div>
+        {% endif %}
+
+        {% for field in form %}
+
+            {% if field.name == "machine" and machine %}
+                <div class="form__group form__group--hidden">
+                    {{ field }}
+                </div>
+
+            {% elif field.name == "service_company" %}
+                <div class="form__group form__group--hidden">
+                    {{ field }}
+                </div>
+
+            {% else %}
+                <div class="form__group">
+                    <label class="form__label" for="{{ field.id_for_label }}">{{ field.label }}:</label>
+                    {{ field }}
+
+                    {% if field.errors %}
+                        <div class="form__error">{{ field.errors }}</div>
+                    {% endif %}
+                </div>
+            {% endif %}
+
+        {% endfor %}
+
+        <div class="form-page__buttons">
+            <a href="{% url 'home' %}" class="back__button">Назад</a>
+            <button type="submit" class="button button--primary">Сохранить</button>
+        </div>
+    </form>
+
+</section>
+{% endblock %}

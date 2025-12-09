@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 from machines.models import Machine
 from references.models import FailureNode, RecoveryMethod
 
@@ -11,15 +12,35 @@ class Claim(models.Model):
     recovery_method = models.ForeignKey(RecoveryMethod, on_delete=models.SET_NULL, null=True, verbose_name="Способ восстановления")
     spare_parts_used = models.TextField(blank=True, verbose_name="Используемые запасные части")
     repair_date = models.DateField(verbose_name="Дата восстановления")
-    downtime = models.PositiveIntegerField(editable=False, verbose_name="Время простоя техники")
+
+    downtime = models.PositiveIntegerField(
+        editable=False,
+        null=True,
+        verbose_name="Время простоя техники"
+    )
+
+    service_company = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        limit_choices_to={'groups__name': 'Сервисная организация'},
+        verbose_name="Сервисная организация"
+    )
 
     class Meta:
         verbose_name = "Рекламация"
         verbose_name_plural = "Рекламации"
+        ordering = ['-failure_date']
 
     def save(self, *args, **kwargs):
         if self.failure_date and self.repair_date:
             self.downtime = (self.repair_date - self.failure_date).days
+        else:
+            self.downtime = None
+
+        if self.machine and self.service_company != self.machine.service_company:
+            self.service_company = self.machine.service_company
+
         super().save(*args, **kwargs)
 
     def __str__(self):

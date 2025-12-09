@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Создание элемента{% endblock %}
+
+{% block content %}
+<section class="form-page">
+
+    <h1 class="form-page__title">Создание: {{ title }}</h1>
+
+    <form method="post" class="reference-form">
+        {% csrf_token %}
+
+        {% if form.non_field_errors %}
+            <div class="reference-form__error reference-form__error--nonfield">
+                {{ form.non_field_errors }}
+            </div>
+        {% endif %}
+
+        {% include "references/includes/reference_form_fields.html" %}
+
+        <div class="form-page__buttons">
+            <a href="{% url 'reference-all' %}?tab={{ model_name }}" class="back__button">
+              Назад
+            </a>
+            <button type="submit" class="form__submit">Создать</button>
+        </div>
+
+    </form>
+
+</section>
+{% endblock %}

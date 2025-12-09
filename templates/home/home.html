@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+<section class="home">
+
+    {% if user.is_authenticated %}
+
+        <p class="home__role">
+            {% if is_client %}
+                Клиент: {{ user }}
+            {% elif is_service %}
+                Сервисная организация: {{ user }}
+            {% elif is_manager %}
+                Менеджер: {{ user }}
+            {% endif %}
+        </p>
+
+        <h1 class="home__title">
+            Информация о комплектации и технических характеристиках Вашей техники
+        </h1>
+
+        {% include "home/includes/home_tabs.html" %}
+
+        {% if tab == 'machines' %}
+
+            {% include "home/includes/home_filters.html" with filter=machine_filter tab_name="machines" %}
+
+            {% if is_manager %}
+                <div class="home__add-button-wrapper">
+                    <a href="{% url 'machine-create' %}" class="home__add-button">
+                        Добавить машину
+                    </a>
+                </div>
+            {% endif %}
+
+            {% include "home/includes/machines_block.html" %}
+
+        {% elif tab == 'maintenance' %}
+
+            {% include "home/includes/home_filters.html" with filter=maintenance_filter tab_name="maintenance" %}
+
+            {% if is_manager or is_service or is_client %}
+                <div class="home__add-button-wrapper">
+                    <a href="{% url 'maintenance-create' %}" class="home__add-button">Добавить ТО</a>
+                </div>
+            {% endif %}
+
+            {% include "home/includes/maintenance_block.html" %}
+
+        {% elif tab == 'claims' %}
+
+            {% include "home/includes/home_filters.html" with filter=claim_filter tab_name="claims" %}
+
+            {% if is_manager or is_service %}
+                <div class="home__add-button-wrapper">
+                    <a href="{% url 'create-claim' %}" class="home__add-button">
+                        Добавить рекламацию
+                    </a>
+                </div>
+            {% endif %}
+
+            {% include "home/includes/claims_block.html" %}
+
+        {% endif %}
+
+    {% else %}
+
+        {% include "home/includes/home_public_block.html" %}
+
+    {% endif %}
+
+</section>
+{% endblock %}

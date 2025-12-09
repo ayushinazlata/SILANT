@@ -5,6 +5,7 @@ from references.models import (
     DrivingAxleModel, SteeringAxleModel
 )
 
+
 User = settings.AUTH_USER_MODEL
 
 class Machine(models.Model):
@@ -28,11 +29,12 @@ class Machine(models.Model):
     client = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name="client_machines",
                                verbose_name="Клиент")
     service_company = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name="service_machines",
-                                        verbose_name="Сервисная компания")
+                                        verbose_name="Сервисная организация")
 
     class Meta:
         verbose_name = "Машина"
         verbose_name_plural = "Машины"
+        ordering = ['-shipment_date']
 
     def __str__(self):
         return f"{self.factory_number} ({self.machine_model})"

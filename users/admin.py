@@ -11,4 +11,5 @@ class CustomUserAdmin(UserAdmin):
     )
     list_display = ('username', 'company_name', 'email', 'is_staff')
     list_filter = ('is_staff', 'is_superuser', 'groups')
+    search_fields = ['username', 'email', 'company_name']
 
