@@ -1,0 +1,464 @@
+[
+    {
+      "model": "auth.group",
+      "pk": 1,
+      "fields": { "name": "Менеджер", "permissions": [] }
+    },
+    {
+      "model": "auth.group",
+      "pk": 2,
+      "fields": { "name": "Клиент", "permissions": [] }
+    },
+    {
+      "model": "auth.group",
+      "pk": 3,
+      "fields": { "name": "Сервисная организация", "permissions": [] }
+    },
+  
+    {
+      "model": "users.user",
+      "pk": 1,
+      "fields": {
+        "password": "pbkdf2_sha256$390000$2Y4C3zJkZ4uVopmQ5K1rN3$1RnbDqZ49GVBB0AAH0VGJ3koZ5skcPqBt6zwUx5gJhw=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "manager",
+        "email": "manager@example.com",
+        "company_name": "ООО Менеджмент",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z",
+        "groups": [1],
+        "user_permissions": []
+      }
+    },
+    {
+      "model": "users.user",
+      "pk": 2,
+      "fields": {
+        "password": "pbkdf2_sha256$390000$NRM0dZL8xZ1McZe7xYV2D3$pH6u/TJJg2GtN1mD2BnmCEiJvd4psZ8GbYBrHHbu4/Y=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "client",
+        "email": "client@example.com",
+        "company_name": "ООО Рога и Копыта",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z",
+        "groups": [2],
+        "user_permissions": []
+      }
+    },
+    {
+      "model": "users.user",
+      "pk": 3,
+      "fields": {
+        "password": "pbkdf2_sha256$390000$8iTRiYeqXvY8Z2NOgA65mG$53yQ40vBwAq9wXqqyI1uP3Ki64VaUVHBk5emapMJguw=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "service",
+        "email": "service@example.com",
+        "company_name": "ООО ТехСервис",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z",
+        "groups": [3],
+        "user_permissions": []
+      }
+    },
+  
+    { "model": "references.machinemodel", "pk": 1,
+      "fields": { "name": "Погрузчик 5000", "description": "Универсальный погрузчик" }
+    },
+    { "model": "references.machinemodel", "pk": 2,
+      "fields": { "name": "Погрузчик 7000", "description": "Усиленная серия" }
+    },
+  
+    { "model": "references.enginemodel", "pk": 1,
+      "fields": { "name": "Двигатель А1", "description": "Базовый двигатель серии А" }
+    },
+    { "model": "references.enginemodel", "pk": 2,
+      "fields": { "name": "Двигатель А2", "description": "Мощная версия" }
+    },
+  
+    { "model": "references.transmissionmodel", "pk": 1,
+      "fields": { "name": "Трансмиссия Т4", "description": "4-ступенчатая гидравлика" }
+    },
+    { "model": "references.transmissionmodel", "pk": 2,
+      "fields": { "name": "Трансмиссия Т6", "description": "6-ступенчатая" }
+    },
+  
+    { "model": "references.drivingaxlemodel", "pk": 1,
+      "fields": { "name": "ВМ-12", "description": "Усиленный ведущий мост" }
+    },
+    { "model": "references.drivingaxlemodel", "pk": 2,
+      "fields": { "name": "ВМ-20", "description": "Грузоподъемность 20т" }
+    },
+  
+    { "model": "references.steeringaxlemodel", "pk": 1,
+      "fields": { "name": "УМ-3", "description": "Поворотный механизм 3 поколения" }
+    },
+    { "model": "references.steeringaxlemodel", "pk": 2,
+      "fields": { "name": "УМ-5", "description": "Увеличенный угол поворота" }
+    },
+  
+    { "model": "references.maintenancetype", "pk": 1,
+      "fields": { "name": "ТО-1", "description": "Плановое ТО-1" }
+    },
+    { "model": "references.maintenancetype", "pk": 2,
+      "fields": { "name": "ТО-2", "description": "Плановое ТО-2" }
+    },
+  
+    { "model": "references.maintenanceorganization", "pk": 1,
+      "fields": { "name": "ООО РемонтТех", "description": "Авторизованный сервис" }
+    },
+    { "model": "references.maintenanceorganization", "pk": 2,
+      "fields": { "name": "ООО СервисПроф", "description": "Партнерская сеть" }
+    },
+  
+    { "model": "references.failurenode", "pk": 1,
+      "fields": { "name": "Гидравлика", "description": "Неисправность системы" }
+    },
+    { "model": "references.failurenode", "pk": 2,
+      "fields": { "name": "Электрика", "description": "Проблема с проводкой" }
+    },
+  
+    { "model": "references.recoverymethod", "pk": 1,
+      "fields": { "name": "Замена узла", "description": "Полная замена" }
+    },
+    { "model": "references.recoverymethod", "pk": 2,
+      "fields": { "name": "Ремонт", "description": "Восстановительный ремонт" }
+    },
+
+    {
+      "model": "machines.machine",
+      "pk": 1,
+      "fields": {
+        "factory_number": "SIL5001",
+        "machine_model": 1,
+        "engine_model": 1,
+        "transmission_model": 1,
+        "driving_axle_model": 1,
+        "steering_axle_model": 1,
+        "engine_number": "ENG-7781",
+        "transmission_number": "TRNS-0021",
+        "driving_axle_number": "DA-882",
+        "steering_axle_number": "SA-443",
+        "consignee": "Завод №12",
+        "delivery_address": "Москва, ул. Строителей 10",
+        "equipment": "Стандартная комплектация",
+        "supply_contract": "Договор №55/24",
+        "shipment_date": "2024-09-01",
+        "client": 2,
+        "service_company": 3
+      }
+    },
+    {
+      "model": "machines.machine",
+      "pk": 2,
+      "fields": {
+        "factory_number": "SIL5002",
+        "machine_model": 2,
+        "engine_model": 2,
+        "transmission_model": 2,
+        "driving_axle_model": 2,
+        "steering_axle_model": 2,
+        "engine_number": "ENG-9951",
+        "transmission_number": "TRNS-7781",
+        "driving_axle_number": "DA-991",
+        "steering_axle_number": "SA-211",
+        "consignee": "Завод №12",
+        "delivery_address": "Москва, ул. Складочная 7",
+        "equipment": "Расширенная комплектация",
+        "supply_contract": "Договор №77/24",
+        "shipment_date": "2024-08-15",
+        "client": 2,
+        "service_company": 3
+      }
+    },
+    {
+      "model": "machines.machine",
+      "pk": 3,
+      "fields": {
+        "factory_number": "SIL6001",
+        "machine_model": 1,
+        "engine_model": 2,
+        "transmission_model": 1,
+        "driving_axle_model": 1,
+        "steering_axle_model": 2,
+        "engine_number": "ENG-5512",
+        "transmission_number": "TRNS-0041",
+        "driving_axle_number": "DA-211",
+        "steering_axle_number": "SA-661",
+        "consignee": "СТО №5",
+        "delivery_address": "Тула, ул. Рабочая 8",
+        "equipment": "Усиленная версия",
+        "supply_contract": "Договор №90/24",
+        "shipment_date": "2024-07-01",
+        "client": 3,
+        "service_company": 3
+      }
+    },
+    {
+      "model": "machines.machine",
+      "pk": 4,
+      "fields": {
+        "factory_number": "SIL6002",
+        "machine_model": 2,
+        "engine_model": 1,
+        "transmission_model": 2,
+        "driving_axle_model": 2,
+        "steering_axle_model": 1,
+        "engine_number": "ENG-5599",
+        "transmission_number": "TRNS-1771",
+        "driving_axle_number": "DA-712",
+        "steering_axle_number": "SA-115",
+        "consignee": "СТО №5",
+        "delivery_address": "Тула, ул. Складочная 19",
+        "equipment": "Стандарт",
+        "supply_contract": "Договор №91/24",
+        "shipment_date": "2024-06-20",
+        "client": 3,
+        "service_company": 3
+      }
+    },
+    {
+      "model": "maintenance.maintenance",
+      "pk": 1,
+      "fields": {
+        "machine": 1,
+        "maintenance_type": 1,
+        "maintenance_date": "2024-10-01",
+        "operating_time": 120,
+        "order_number": "#2025-11УК18СИЛ",
+        "order_date": "2024-09-30",
+        "organization": 1,
+        "service_company": 3
+      }
+    },
+    {
+      "model": "maintenance.maintenance",
+      "pk": 2,
+      "fields": {
+        "machine": 1,
+        "maintenance_type": 2,
+        "maintenance_date": "2024-12-01",
+        "operating_time": 200,
+        "order_number": "#2025-12УК18СИЛ",
+        "order_date": "2024-11-30",
+        "organization": 2,
+        "service_company": 3
+      }
+    },
+  
+    {
+      "model": "maintenance.maintenance",
+      "pk": 3,
+      "fields": {
+        "machine": 2,
+        "maintenance_type": 1,
+        "maintenance_date": "2024-09-10",
+        "operating_time": 110,
+        "order_number": "#2025-13УК18СИЛ",
+        "order_date": "2024-09-08",
+        "organization": 1,
+        "service_company": 3
+      }
+    },
+    {
+      "model": "maintenance.maintenance",
+      "pk": 4,
+      "fields": {
+        "machine": 2,
+        "maintenance_type": 2,
+        "maintenance_date": "2024-11-15",
+        "operating_time": 190,
+        "order_number": "#2025-14УК18СИЛ",
+        "order_date": "2024-11-10",
+        "organization": 2,
+        "service_company": 3
+      }
+    },
+  
+    {
+      "model": "maintenance.maintenance",
+      "pk": 5,
+      "fields": {
+        "machine": 3,
+        "maintenance_type": 1,
+        "maintenance_date": "2024-08-05",
+        "operating_time": 95,
+        "order_number": "#2025-15УК18СИЛ",
+        "order_date": "2024-08-03",
+        "organization": 1,
+        "service_company": 3
+      }
+    },
+    {
+      "model": "maintenance.maintenance",
+      "pk": 6,
+      "fields": {
+        "machine": 3,
+        "maintenance_type": 2,
+        "maintenance_date": "2024-10-20",
+        "operating_time": 160,
+        "order_number": "#2025-16УК18СИЛ",
+        "order_date": "2024-10-18",
+        "organization": 2,
+        "service_company": 3
+      }
+    },
+  
+    {
+      "model": "maintenance.maintenance",
+      "pk": 7,
+      "fields": {
+        "machine": 4,
+        "maintenance_type": 1,
+        "maintenance_date": "2024-07-10",
+        "operating_time": 88,
+        "order_number": "#2025-17УК18СИЛ",
+        "order_date": "2024-07-08",
+        "organization": 1,
+        "service_company": 3
+      }
+    },
+    {
+      "model": "maintenance.maintenance",
+      "pk": 8,
+      "fields": {
+        "machine": 4,
+        "maintenance_type": 2,
+        "maintenance_date": "2024-09-25",
+        "operating_time": 140,
+        "order_number": "#2025-18УК18СИЛ",
+        "order_date": "2024-09-22",
+        "organization": 2,
+        "service_company": 3
+      }
+    },
+    {
+      "model": "claims.claim",
+      "pk": 1,
+      "fields": {
+        "machine": 1,
+        "failure_date": "2024-11-10",
+        "operating_time": 150,
+        "failure_node": 1,
+        "failure_description": "Утечка жидкости",
+        "recovery_method": 1,
+        "spare_parts_used": "Шланг давления",
+        "repair_date": "2024-11-15",
+        "service_company": 3
+      }
+    },
+    {
+      "model": "claims.claim",
+      "pk": 2,
+      "fields": {
+        "machine": 1,
+        "failure_date": "2024-12-20",
+        "operating_time": 180,
+        "failure_node": 2,
+        "failure_description": "Пробой проводки",
+        "recovery_method": 2,
+        "spare_parts_used": "Жгут проводов",
+        "repair_date": "2024-12-22",
+        "service_company": 3
+      }
+    },
+  
+    {
+      "model": "claims.claim",
+      "pk": 3,
+      "fields": {
+        "machine": 2,
+        "failure_date": "2024-10-05",
+        "operating_time": 160,
+        "failure_node": 1,
+        "failure_description": "Гидравлический шум",
+        "recovery_method": 1,
+        "spare_parts_used": "Фильтр масла",
+        "repair_date": "2024-10-09",
+        "service_company": 3
+      }
+    },
+    {
+      "model": "claims.claim",
+      "pk": 4,
+      "fields": {
+        "machine": 2,
+        "failure_date": "2024-11-28",
+        "operating_time": 205,
+        "failure_node": 2,
+        "failure_description": "КЗ в цепи питания",
+        "recovery_method": 2,
+        "spare_parts_used": "Реле и проводка",
+        "repair_date": "2024-11-30",
+        "service_company": 3
+      }
+    },
+  
+    {
+      "model": "claims.claim",
+      "pk": 5,
+      "fields": {
+        "machine": 3,
+        "failure_date": "2024-08-18",
+        "operating_time": 120,
+        "failure_node": 1,
+        "failure_description": "Разрыв шланга",
+        "recovery_method": 1,
+        "spare_parts_used": "Шланг высокого давления",
+        "repair_date": "2024-08-19",
+        "service_company": 3
+      }
+    },
+    {
+      "model": "claims.claim",
+      "pk": 6,
+      "fields": {
+        "machine": 3,
+        "failure_date": "2024-10-11",
+        "operating_time": 175,
+        "failure_node": 2,
+        "failure_description": "Проблема блока управления",
+        "recovery_method": 2,
+        "spare_parts_used": "Модуль управления",
+        "repair_date": "2024-10-13",
+        "service_company": 3
+      }
+    },
+  
+    {
+      "model": "claims.claim",
+      "pk": 7,
+      "fields": {
+        "machine": 4,
+        "failure_date": "2024-07-25",
+        "operating_time": 110,
+        "failure_node": 1,
+        "failure_description": "Утечка масла",
+        "recovery_method": 1,
+        "spare_parts_used": "Уплотнитель",
+        "repair_date": "2024-07-27",
+        "service_company": 3
+      }
+    },
+    {
+      "model": "claims.claim",
+      "pk": 8,
+      "fields": {
+        "machine": 4,
+        "failure_date": "2024-09-10",
+        "operating_time": 165,
+        "failure_node": 2,
+        "failure_description": "Неисправность датчика",
+        "recovery_method": 2,
+        "spare_parts_used": "Датчик давления",
+        "repair_date": "2024-09-11",
+        "service_company": 3
+      }
+    }
+  ]
+  

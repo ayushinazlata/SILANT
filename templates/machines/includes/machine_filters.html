@@ -7,27 +7,34 @@
         <form method="get" class="home__form">
             <input type="hidden" name="tab" value="{{ tab_name }}">
 
-            {% for field in filter.form %}
-                {% if field.field.widget.input_type != "hidden" %}
-                    <div class="home__filter-item">
+            <div class="home__filters">
+                {% for field in filter.form %}
+                    {% if field.field.widget.input_type != "hidden" %}
+                        <div class="home__filter-item">
 
-                        {% if field.label %}
-                            <label class="home__filter-label">{{ field.label }}</label>
-                        {% endif %}
+                            {% if field.label %}
+                                <label class="home__filter-label">{{ field.label }}</label>
+                            {% endif %}
 
+                            {{ field }}
+
+                            {% if field.errors %}
+                                <div class="home__filter-error">{{ field.errors }}</div>
+                            {% endif %}
+                        </div>
+                    {% else %}
                         {{ field }}
+                    {% endif %}
+                {% endfor %}
 
-                        {% if field.errors %}
-                            <div class="home__filter-error">{{ field.errors }}</div>
-                        {% endif %}
-                    </div>
-                {% else %}
-                    {{ field }}
-                {% endif %}
-            {% endfor %}
+                <div class="home__filter-actions">
+                    <button class="home__button home__form-button">Фильтровать</button>
 
-            <button type="submit" class="home__button home__form-button">Фильтровать</button>
-            <a href="?tab={{ tab_name }}" class="home__clean-button">Сбросить фильтры</a>
+                    <a href="?tab={{ tab_name }}" class="home__clean-button">
+                        Сбросить фильтры
+                    </a>
+                </div>
+            </div>
         </form>
     </div>
 </div>

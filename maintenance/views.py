@@ -1,8 +1,8 @@
 from django.core.exceptions import PermissionDenied
 from django.views.generic.edit import CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.urls import reverse_lazy
-from django.shortcuts import get_object_or_404
+from django.urls import reverse
+from django.shortcuts import get_object_or_404, redirect
 
 from .models import Maintenance
 from machines.models import Machine
@@ -13,18 +13,13 @@ class MaintenanceCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView)
     model = Maintenance
     form_class = MaintenanceForm
     template_name = 'forms/maintenance_form.html'
-    success_url = reverse_lazy('home')
 
     def test_func(self):
         user = self.request.user
-
-        if user.groups.filter(name="Менеджер").exists():
-            return True
-
-        if user.groups.filter(name__in=["Клиент", "Сервисная организация"]).exists():
-            return True
-
-        return False
+        return (
+            user.groups.filter(name="Менеджер").exists()
+            or user.groups.filter(name__in=["Клиент", "Сервисная организация"]).exists()
+        )
 
     def handle_no_permission(self):
         if self.request.user.is_authenticated:
@@ -52,29 +47,25 @@ class MaintenanceCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView)
         ctx = super().get_context_data(**kwargs)
         ctx["machine"] = self.get_machine()
         return ctx
-
+    
     def form_valid(self, form):
         user = self.request.user
-
         machine = self.get_machine() or form.cleaned_data.get("machine")
 
         if not machine:
             raise PermissionDenied("Машина не указана.")
 
-        if user.groups.filter(name="Менеджер").exists():
-            form.instance.machine = machine
-            return super().form_valid(form)
-
         if user.groups.filter(name="Клиент").exists():
             if machine.client != user:
                 raise PermissionDenied("Вы можете добавлять ТО только к своим машинам.")
-            form.instance.machine = machine
-            return super().form_valid(form)
 
         if user.groups.filter(name="Сервисная организация").exists():
             if machine.service_company != user:
                 raise PermissionDenied("Эта машина обслуживается другой сервисной компании.")
-            form.instance.machine = machine
-            return super().form_valid(form)
 
-        raise PermissionDenied("Недостаточно прав.")
+        form.instance.machine = machine
+        form.instance.service_company = machine.service_company
+
+        form.save()
+
+        return redirect(reverse("home") + "?tab=maintenance")

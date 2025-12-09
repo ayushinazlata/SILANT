@@ -1,31 +1,25 @@
 from django.core.exceptions import PermissionDenied
 from django.views.generic.edit import CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.urls import reverse_lazy
-from django.shortcuts import get_object_or_404
+from django.urls import reverse
+from django.shortcuts import get_object_or_404, redirect
 
 from .models import Claim
 from machines.models import Machine
 from .forms import ClaimForm
 
 
-
 class ClaimCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = Claim
     form_class = ClaimForm
     template_name = "forms/claim_form.html"
-    success_url = reverse_lazy("home")
 
     def test_func(self):
         user = self.request.user
-
-        if user.groups.filter(name="Менеджер").exists():
-            return True
-
-        if user.groups.filter(name="Сервисная организация").exists():
-            return True
-
-        return False
+        return (
+            user.groups.filter(name="Менеджер").exists()
+            or user.groups.filter(name="Сервисная организация").exists()
+        )
 
     def handle_no_permission(self):
         if self.request.user.is_authenticated:
@@ -56,23 +50,21 @@ class ClaimCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
 
     def form_valid(self, form):
         user = self.request.user
-        machine = self.get_machine()
+        machine = self.get_machine() or form.cleaned_data.get("machine")
 
-        if machine:
-            form.instance.machine = machine
-
-        if user.groups.filter(name="Менеджер").exists():
-            form.instance.service_company = machine.service_company
-            return super().form_valid(form)
+        if not machine:
+            raise PermissionDenied("Машина не указана.")
 
         if user.groups.filter(name="Клиент").exists():
             raise PermissionDenied("Клиенты не могут добавлять рекламации.")
 
         if user.groups.filter(name="Сервисная организация").exists():
-            if not machine or machine.service_company != user:
+            if machine.service_company != user:
                 raise PermissionDenied("Это машина другой сервисной компании.")
 
-            form.instance.service_company = machine.service_company
-            return super().form_valid(form)
+        form.instance.machine = machine
+        form.instance.service_company = machine.service_company
 
-        raise PermissionDenied("Недостаточно прав.")
+        form.save()
+
+        return redirect(reverse("home") + "?tab=claims")

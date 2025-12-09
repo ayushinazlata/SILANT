@@ -3,4 +3,5 @@ __pycache__/
 *.pyc
 .env
 errors.log
-cache/
+cache/db.sqlite3
+cookies.txt

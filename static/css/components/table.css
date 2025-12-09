@@ -74,7 +74,6 @@
 	width: max-content;
 	min-width: 100%;
 	table-layout: fixed;
-	font-style: italic;
 }
 
 .mobile-table .mobile-label {
